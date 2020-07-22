@@ -10,9 +10,10 @@ _stages_to_print = [
     'VBF Pair',
     'VBF dEta',
     'VBF mjj',
-    #'VBF BDT',
+    'VBF BDT',
     '4 good jets (w/o IS), >= 2 tagged',
     'Multi Tagged',
+    #'Two Tagged',
     'Valid',
     'VBF pTsum',
     'pT(h)s',
@@ -41,8 +42,10 @@ def main():
     plot_data = {'x':[],'weights':[],'label':[],'histtype':'step','linewidth':2}
     x_values = list(range(len(_stages_to_print)))
     cutflow_type = 'FourTagCutflow'
+    #cutflow_type = 'TwoTagCutflow'
     for cvv, base in base_names.items():
-        outputname = '../nano_ntuples/V5/output_MC16d_'+base+'.root'
+        #outputname = '../nano_ntuples/V5/output_MC16d_'+base+'.root'
+        outputname = '../nano_ntuples/V12_c0p05/output_MC16d_'+base+'_cut.root'
         cutflow_values = get_cutflow_values(outputname,cutflow_type, _stages_to_print)
         plot_data['x'].append(x_values)
         plot_data['weights'].append(cutflow_values)
@@ -59,14 +62,11 @@ def main():
     plt.xticks(ticks=bins, labels=x_tick_labels, rotation=45, fontsize='xx-small')
     plt.ylabel('Weight Sum (Events / $fb^{-1}$ of data)')
     plt.yscale('log')
+    plt.ylim(1e-3, 50)
     plt.title(cutflow_type)
     plt.setp( ax.xaxis.get_majorticklabels(), ha='left')
     #plt.tight_layout()
-    plt.savefig('figures/cutflow.png', dpi=500)
-
-
-
-
+    plt.savefig('figures/cutflow_4tag_new_bad.png', dpi=500)
 
 
 

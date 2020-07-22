@@ -185,7 +185,7 @@ class Roc():
             for marker_val, kwargs in self.marker_requests[label]:
                 bin_index = int( (marker_val-minimum) / bin_width )
                 location = (efficiency[bin_index], rejection[bin_index])
-                print(label, location)
+                print(f'Marker: {label}={marker_val} @ {location[0]},{location[1]}')
                 marker_list.append( (location, kwargs) )
 
         plt.legend(prop={'size':6})

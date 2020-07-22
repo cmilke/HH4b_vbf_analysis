@@ -110,6 +110,7 @@ _plots.add_roc('rocs_3jet', 'Efficiency/Rejection Performance of Various VBF/ggF
 
 #_plots['rocs'].add_marker('mjjmax_Deta3', 1000, annotation='1000 GeV', marker='.', color='red')
 _plots['rocs_weighted'].add_marker('mjjmax_Deta3', 1000, annotation='1000 GeV', marker='.', color='blue')
+_plots['rocs_weighted'].add_marker('BDT: mjj-Deta-FW', 0.3, annotation='', marker='.', color='green')
 #_plots['rocs'].add_marker('mjjmax', 1000, annotation='1000 GeV', marker='.', color='blue')
 #_plots['rocs_2jet'].add_marker('mjjSL', 735, annotation='735 GeV', marker='*', color='red')
 #_plots['rocs_3jet'].add_marker('mjjSL', 735, annotation='735 GeV', marker='*', color='red')

@@ -74,7 +74,7 @@ def process_events(in_events, out_events, bgd=False, cvv_value=-1):
         for tj in event['tjs']:
             pdgs.append(tj['truth_pdgId'])
         pdgs.sort()
-        print(pdgs, pdgs==base_pdg)
+        print(pdgs)
         #in_vecs = []
         #in_vecs_ptGT30 = []
         #for jet in event['resolved_jets']:
@@ -96,14 +96,15 @@ def process_events(in_events, out_events, bgd=False, cvv_value=-1):
 
 
 def extract_data(num_events):
-    for cvv_value, vbf_sample in _VBF_samples.items():
-        in_sig_events = event_iterator(autils.input_datasets[vbf_sample], 'XhhMiniNtuple', _input_branches, num_events)
-        out_sig_events = event_iterator(autils.output_datasets[vbf_sample], 'VBF_tree', _output_branches, num_events)
-        process_events(in_sig_events, out_sig_events, cvv_value=cvv_value)
+    #for cvv_value, vbf_sample in _VBF_samples.items():
+    #    in_sig_events = event_iterator(autils.input_datasets[vbf_sample], 'XhhMiniNtuple', _input_branches, num_events)
+    #    out_sig_events = event_iterator(autils.output_datasets[vbf_sample], 'VBF_tree', _output_branches, num_events)
+    #    process_events(in_sig_events, out_sig_events, cvv_value=cvv_value)
 
-    in_bgd_events = event_iterator(autils.input_datasets['MC16d_ggF-HH-bbbb'], 'XhhMiniNtuple', _input_branches, num_events)
-    out_bgd_events = event_iterator(autils.output_datasets['MC16d_ggF-HH-bbbb'], 'VBF_tree', _output_branches, num_events)
-    process_events(in_bgd_events, out_bgd_events, bgd=True)
+    #in_bgd_events = event_iterator(autils.input_datasets['MC16d_ggF-HH-bbbb'], 'XhhMiniNtuple', _input_branches, num_events)
+    #out_bgd_events = event_iterator(autils.output_datasets['MC16d_ggF-HH-bbbb'], 'VBF_tree', _output_branches, num_events)
+    #process_events(in_bgd_events, out_bgd_events, bgd=True)
+    process_events( event_iterator(['../mc16_13TeV.450044.MGH7EvtGen_MMHT2014_hh_bbbb_vbf_l1cvv1cv1.deriv.DAOD_EXOT8.e7254_s3126_r9364_p4089.root'], 'XhhMiniNtuple', _input_branches, num_events) , None)
 
 
 
